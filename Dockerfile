@@ -14,12 +14,9 @@ RUN apk add --update --no-cache supervisor openvpn sniproxy \
 	&& chmod 755 tls-verify.sh \
 	&& chmod 755 entrypoint.sh
 
-ENV COUNTRY='NL' \
+ENV COUNTRY='' \
 	USERNAME='' \
-	PASSWORD='' \
-	PNET='' \
-	RANDOMIZE='true' \
-	PRIO_REMOTE=''
+	PASSWORD=''
 
 EXPOSE 80 443
 
