@@ -16,7 +16,9 @@ RUN apk add --update --no-cache supervisor openvpn sniproxy \
 
 ENV COUNTRY='' \
 	USERNAME='' \
-	PASSWORD=''
+	PASSWORD='' \
+	INCLUDED_REMOTES='' \
+	EXCLUDED_REMOTES=''
 
 EXPOSE 80 443
 
