@@ -1,5 +1,5 @@
-# smartdns-vpn
+# SmartDNS VPN
  
-A docker based smart DNS. For geo unblocking.
-
-Work in progress...
+Please see main project for info.
+Github: https://github.com/rundqvist/smartdns
+Docker: https://hub.docker.com/r/rundqvist/smartdns
