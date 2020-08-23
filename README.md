@@ -13,7 +13,7 @@ Do you find this container useful? Please consider a donation.
 * Proxies all http(s)-traffic through vpn
 
 ## Requirements
-* A supported VPN account (See base image for vpn configuration: https://hub.docker.com/r/rundqvist/openvpn)
+* A supported VPN account (See base image for supported vpn providers: https://hub.docker.com/r/rundqvist/openvpn)
 * A local DNS server (or at least, ability to configure your DNS lookups)
 * Ports 80 & 443 available on host
 
@@ -23,9 +23,6 @@ Do you find this container useful? Please consider a donation.
 * Alpine Linux
 * OpenVPN container as base (https://hub.docker.com/r/rundqvist/openvpn)
 * SNI Proxy (https://github.com/dlundquist/sniproxy)
-
-## Configuration
-See base image for vpn configuration: https://hub.docker.com/r/rundqvist/openvpn
 
 ## Run
 ```
@@ -44,6 +41,10 @@ $ sudo docker run \
     -e 'VPN_COUNTRY=[your desired country]' \
     rundqvist/openvpn-sniproxy
 ```
+
+### Configuration
+See base image for vpn configuration: https://hub.docker.com/r/rundqvist/openvpn
+
 
 ## Setup
 Configure your DNS to return your host ip for all lookups.
