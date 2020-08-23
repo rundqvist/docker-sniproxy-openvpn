@@ -58,5 +58,6 @@ Example (if your DNS utilizes dnsmasq):
 address=/#/[your docker host ip]
 ```
 * Restart DNS
+
 ## Issues
 Please report issues at https://github.com/rundqvist/docker-openvpn-sniproxy/issues
