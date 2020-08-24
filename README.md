@@ -1,6 +1,7 @@
 # Docker OpenVPN container with SNI Proxy
-A small container for proxying http(s)-traffic through vpn.  
-https://hub.docker.com/r/rundqvist/openvpn-sniproxy/
+A small container for proxying http(s)-traffic through vpn.
+
+[![Docker pulls](https://img.shields.io/docker/pulls/rundqvist/openvpn-sniproxy.svg)](https://hub.docker.com/r/rundqvist/openvpn-sniproxy)
 
 # Appreciate my work?
 Do you find this container useful? Please consider a donation.
