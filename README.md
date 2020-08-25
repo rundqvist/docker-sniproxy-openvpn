@@ -14,11 +14,12 @@ Do you find this container useful? Please consider a donation.
 * Proxies all http(s)-traffic through vpn
 
 ## Requirements
-* A supported VPN account (See base image for supported vpn providers: https://hub.docker.com/r/rundqvist/openvpn)
 * A local DNS server (or at least, ability to configure your DNS lookups)
 * Ports 80 & 443 available on host
+* A supported VPN account (See base image for supported vpn providers: https://hub.docker.com/r/rundqvist/openvpn)
 
-[![Sign up](https://img.shields.io/badge/Sign_up-IPVanish_VPN-6fbc44)](https://www.ipvanish.com/?a_bid=48f95966&a_aid=5f3eb2f0be07f)
+[![Affiliate](https://img.shields.io/badge/Affiliate-IPVanish_VPN-6fbc44)](https://www.ipvanish.com/?a_bid=48f95966&a_aid=5f3eb2f0be07f)
+[![Affiliate](https://img.shields.io/badge/Affiliate-WeVPN-e33866)](https://www.wevpn.com/aff/rundqvist)
 
 ## Components
 * Alpine Linux
