@@ -37,6 +37,7 @@ $ sudo docker run \
     --dns 1.0.0.1 \
     -p 80:80 \
     -p 443:443 \
+    -e 'NETWORK=[your private network]' \
     -e 'VPN_PROVIDER=[your vpn provider]' \
     -e 'VPN_USERNAME=[your vpn username]' \
     -e 'VPN_PASSWORD=[your vpn password]' \
@@ -47,6 +48,9 @@ $ sudo docker run \
 ### Configuration
 See base image for vpn configuration: https://hub.docker.com/r/rundqvist/openvpn
 
+| Variable | Usage |
+|----------|-------|
+| NETWORK | Your private network IP (example 192.168.0.0). |
 
 ## Setup
 Configure your DNS to return your host ip for all lookups.

@@ -6,6 +6,8 @@ WORKDIR /app
 
 COPY root /
 
+ENV NETWORK=''
+
 RUN apk add --update --no-cache sniproxy
 
 EXPOSE 80 443
