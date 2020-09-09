@@ -1,3 +1,2 @@
 dockerrun.sh
-root/app/sniproxy/.DS_Store
-root/app/.DS_Store
+.DS_Store
