@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if expr "$(var NETWORK)" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.0$' >/dev/null; then
-    log -i sniproxy "Adding route for communication with network $(var NETWORK)/24";
-    route add -net $(var NETWORK) netmask 255.255.255.0 gw $(ip route | awk '/default/ { print $3 }')
-else
-    log -w sniproxy "NETWORK missing or wrong format. May cause communication problems.";
-fi
