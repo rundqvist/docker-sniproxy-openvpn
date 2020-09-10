@@ -11,6 +11,7 @@ Please support the development by making a small donation.
 [![Support](https://img.shields.io/badge/support-PayPal-blue)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SZ7J9JL9P5DGE&source=url)
 
 ## Features
+* Killswitch (kills network if vpn is down)
 * Proxies all http(s)-traffic through vpn
 
 ## Requirements
@@ -25,6 +26,7 @@ Please support the development by making a small donation.
 * Alpine Linux
 * OpenVPN container as base (https://hub.docker.com/r/rundqvist/openvpn)
 * SNI Proxy (https://github.com/dlundquist/sniproxy)
+* Dnsmasq
 
 ## Run
 ```
@@ -35,13 +37,15 @@ $ sudo docker run \
     --name=openvpn-sniproxy \
     --dns 1.1.1.1 \
     --dns 1.0.0.1 \
+    -p 53:53/udp \
     -p 80:80 \
     -p 443:443 \
-    -e 'NETWORK=[your private network]' \
+    -e 'HOST_IP=[your server ip]' \
     -e 'VPN_PROVIDER=[your vpn provider]' \
     -e 'VPN_USERNAME=[your vpn username]' \
     -e 'VPN_PASSWORD=[your vpn password]' \
     -e 'VPN_COUNTRY=[your desired country]' \
+    -e 'DNS_ENABLED=true' \
     rundqvist/openvpn-sniproxy
 ```
 
@@ -50,10 +54,11 @@ See base image for vpn configuration: https://hub.docker.com/r/rundqvist/openvpn
 
 | Variable | Usage |
 |----------|-------|
-| NETWORK | Your private network IP (example 192.168.0.0). |
+| HOST_IP | IP of the machine where container is running. |
+| DNS_ENABLED | Enables DNS server in container to easier route http(s)-requests through vpn. |
 
 ## Setup
-Configure your DNS to return your host ip for all lookups.
+Enable DNS in container, or configure your DNS to return your host ip for all lookups.
 
 Example (if your DNS utilizes dnsmasq):
 * Locate your dnsmasq folder (usually /etc/dnsmasq.d/)
@@ -61,7 +66,7 @@ Example (if your DNS utilizes dnsmasq):
 * Add the following contents to the file:
 
 ``` 
-address=/#/[your docker host ip]
+address=/#/[your server ip]
 ```
 * Restart DNS
 

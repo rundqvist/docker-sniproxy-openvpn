@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$(var DNS_ENABLE)" = "true" ] ; then
+if [ "$(var DNS_ENABLED)" = "true" ] ; then
     log -i dnsmasq "DNS server enabled.";
     cp -f /app/dnsmasq/supervisord.template.conf /app/dnsmasq/supervisord.conf
 
