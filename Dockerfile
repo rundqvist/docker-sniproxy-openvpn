@@ -6,8 +6,9 @@ WORKDIR /app
 
 COPY root /
 
-ENV NETWORK=''
+ENV NETWORK='' \
+    DNS_ENABLE=''
 
-RUN apk add --update --no-cache sniproxy
+RUN apk add --update --no-cache sniproxy dnsmasq
 
-EXPOSE 80 443
+EXPOSE 53 80 443
