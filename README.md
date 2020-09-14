@@ -2,6 +2,9 @@
 A small container for proxying http(s)-traffic through vpn.
 
 [![Docker pulls](https://img.shields.io/docker/pulls/rundqvist/openvpn-sniproxy.svg)](https://hub.docker.com/r/rundqvist/openvpn-sniproxy)
+[![image size](https://img.shields.io/docker/image-size/rundqvist/openvpn-sniproxy.svg)](https://hub.docker.com/r/rundqvist/openvpn-sniproxy)
+[![commit activity](https://img.shields.io/github/commit-activity/m/rundqvist/docker-openvpn-sniproxy)](https://github.com/rundqvist/docker-openvpn-sniproxy)
+[![last commit](https://img.shields.io/github/last-commit/rundqvist/docker-openvpn-sniproxy.svg)](https://github.com/rundqvist/docker-openvpn-sniproxy)
 
 ## Do you find this container useful? 
 Please support the development by making a small donation.
@@ -13,20 +16,24 @@ Please support the development by making a small donation.
 ## Features
 * Killswitch (kills network if vpn is down)
 * Proxies all http(s)-traffic through vpn
+* Connect to random server
+* Reconnects if connection breaks
+* Healthcheck (checking that ip differs from public ip)
 
 ## Requirements
-* A local DNS server (or at least, ability to configure your DNS lookups)
 * Ports 80 & 443 available on host
-* A supported VPN account (currently [IPVanish](https://www.ipvanish.com/?a_bid=48f95966&a_aid=5f3eb2f0be07f) or [WeVPN](https://www.wevpn.com/aff/rundqvist))
+* A supported VPN account (currently [ipvanish](https://www.ipvanish.com/?a_bid=48f95966&a_aid=5f3eb2f0be07f) or [wevpn](https://www.wevpn.com/aff/rundqvist))
 
 [![Sign up](https://img.shields.io/badge/sign_up-IPVanish_VPN-6fbc44)](https://www.ipvanish.com/?a_bid=48f95966&a_aid=5f3eb2f0be07f)
 [![Sign up](https://img.shields.io/badge/sign_up-WeVPN-e33866)](https://www.wevpn.com/aff/rundqvist)
 
 ## Components
-* Alpine Linux
-* OpenVPN container as base (https://hub.docker.com/r/rundqvist/openvpn)
-* SNI Proxy (https://github.com/dlundquist/sniproxy)
-* Dnsmasq
+Built on [rundqvist/openvpn](https://hub.docker.com/r/rundqvist/openvpn) container.
+* [Alpine Linux](https://www.alpinelinux.org)
+* [Supervisor](https://github.com/Supervisor/supervisor)
+* [OpenVPN](https://github.com/OpenVPN/openvpn)
+* [SNI Proxy](https://github.com/dlundquist/sniproxy)
+* [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html)
 
 ## Run
 ```
@@ -46,27 +53,50 @@ $ sudo docker run \
     -e 'VPN_PASSWORD=[your vpn password]' \
     -e 'VPN_COUNTRY=[your desired country]' \
     -e 'DNS_ENABLED=true' \
+    -v /path/to/cache/folder:/cache/ \
     rundqvist/openvpn-sniproxy
 ```
 
 ### Configuration
-See base image for vpn configuration: https://hub.docker.com/r/rundqvist/openvpn
+See base image ([rundqvist/openvpn](https://hub.docker.com/r/rundqvist/openvpn)) for detailed vpn configuration.
 
+#### Variables
 | Variable | Usage |
 |----------|-------|
 | HOST_IP | IP of the machine where container is running. |
-| DNS_ENABLED | Enables DNS server in container to easier route http(s)-requests through vpn. |
+| DNS_ENABLED | Enables DNS server in container to easier route http(s)-requests through vpn. <br />`true` or `false` (default). |
+| _VPN_PROVIDER_ | Your VPN provider ("[ipvanish](https://www.ipvanish.com/?a_bid=48f95966&a_aid=5f3eb2f0be07f)" or "[wevpn](https://www.wevpn.com/aff/rundqvist)"). |
+| _VPN_USERNAME_ | Your VPN username. |
+| _VPN_PASSWORD_ | Your VPN password. |
+| _VPN_COUNTRY_ | ISO 3166-1 alpha-2 country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). |
+| VPN_KILLSWITCH | Kills network if vpn is down. <br />`true` (default) or `false`. |
+| VPN_INCLUDED_REMOTES | Host names separated by one space. VPN will _only_ connect to entered remotes. |
+| VPN_EXCLUDED_REMOTES | Host names separated by one space. VPN will _not_ connect to entered remotes. |
+| VPN_RANDOM_REMOTE | Connects to random remote. <br />`true` or `false` (default). |
+
+Variables in _cursive_ is mandatory.
+
+#### Volumes
+
+| Folder | Usage |
+|--------|-------|
+| /cache/ | Used for caching original configuration files from vpn provider |
 
 ## Setup
-Enable DNS in container, or configure your DNS to return your host ip for all lookups.
+
+### Internal DNS
+Set `DNS_ENABLED=true` and configure your client (or router) to use `HOST_IP` as DNS.
+
+### External DNS
+Configure your DNS to return your host ip for all lookups.
 
 Example (if your DNS utilizes dnsmasq):
 * Locate your dnsmasq folder (usually /etc/dnsmasq.d/)
 * Create a _.conf_ file (for example: 10-proxy.conf)
-* Add the following contents to the file:
+* Add the following contents to the file (replace `HOST_IP` with your actual IP):
 
 ``` 
-address=/#/[your server ip]
+address=/#/[HOST_IP]
 ```
 * Restart DNS
 
