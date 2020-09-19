@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$(var SMARTDNS_STANDALONE)" = "true" ] ; then
+if [ "$(var DNS_ENABLED)" = "true" ] ; then
     if [ "$(ps | grep "dnsmasq" | wc -l)" -gt 1 ] ; then
         log -d dnsmasq "[health] DNSmasq is running."
     else
