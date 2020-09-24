@@ -2,9 +2,9 @@
 
 if [ "$(var DNS_ENABLED)" = "true" ] ; then
     if [ "$(ps | grep "dnsmasq" | wc -l)" -gt 1 ] ; then
-        log -d dnsmasq "[health] DNSmasq is running."
+        log -d dnsmasq "Dnsmasq is running."
     else
-        log -e dnsmasq "[health] DNSmasq is not running."
+        log -e dnsmasq "Dnsmasq is not running."
         exit 1;
     fi
 fi
