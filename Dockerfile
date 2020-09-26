@@ -6,8 +6,7 @@ WORKDIR /app
 
 COPY root /
 
-ENV NETWORK='' \
-    DNS_ENABLED=''
+ENV DNS_ENABLED=''
 
 RUN apk add --update --no-cache sniproxy dnsmasq
 
