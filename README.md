@@ -1,10 +1,10 @@
 # Docker OpenVPN container with SNI Proxy
 A small container for proxying http(s)-traffic through vpn.
 
-[![Docker pulls](https://img.shields.io/docker/pulls/rundqvist/openvpn-sniproxy.svg)](https://hub.docker.com/r/rundqvist/openvpn-sniproxy)
-[![image size](https://img.shields.io/docker/image-size/rundqvist/openvpn-sniproxy.svg)](https://hub.docker.com/r/rundqvist/openvpn-sniproxy)
-[![commit activity](https://img.shields.io/github/commit-activity/m/rundqvist/docker-openvpn-sniproxy)](https://github.com/rundqvist/docker-openvpn-sniproxy)
-[![last commit](https://img.shields.io/github/last-commit/rundqvist/docker-openvpn-sniproxy.svg)](https://github.com/rundqvist/docker-openvpn-sniproxy)
+[![Docker pulls](https://img.shields.io/docker/pulls/rundqvist/sniproxy-openvpn.svg)](https://hub.docker.com/r/rundqvist/sniproxy-openvpn)
+[![image size](https://img.shields.io/docker/image-size/rundqvist/sniproxy-openvpn.svg)](https://hub.docker.com/r/rundqvist/sniproxy-openvpn)
+[![commit activity](https://img.shields.io/github/commit-activity/m/rundqvist/docker-sniproxy-openvpn)](https://github.com/rundqvist/docker-sniproxy-openvpn)
+[![last commit](https://img.shields.io/github/last-commit/rundqvist/docker-sniproxy-openvpn.svg)](https://github.com/rundqvist/docker-sniproxy-openvpn)
 
 ## Do you find this container useful? 
 Please support the development by making a small donation.
@@ -42,7 +42,7 @@ $ sudo docker run \
     -d \
     --cap-add=NET_ADMIN \
     --device=/dev/net/tun \
-    --name=openvpn-sniproxy \
+    --name=sniproxy-openvpn \
     --dns 1.1.1.1 \
     --dns 1.0.0.1 \
     -p 53:53/udp \
@@ -55,7 +55,7 @@ $ sudo docker run \
     -e 'VPN_COUNTRY=[your desired country]' \
     -e 'DNS_ENABLED=true' \
     -v /path/to/cache/folder:/cache/ \
-    rundqvist/openvpn-sniproxy
+    rundqvist/sniproxy-openvpn
 ```
 
 ### Configuration
@@ -103,4 +103,4 @@ address=/#/[HOST_IP]
 * Restart DNS
 
 ## Issues
-Please report issues at https://github.com/rundqvist/docker-openvpn-sniproxy/issues
+Please report issues at https://github.com/rundqvist/docker-sniproxy-openvpn/issues
