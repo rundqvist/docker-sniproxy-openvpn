@@ -1,4 +1,4 @@
-FROM rundqvist/openvpn:1.2
+FROM rundqvist/openvpn:latest
 
 LABEL maintainer="mattias.rundqvist@icloud.com"
 
