@@ -6,13 +6,6 @@ A small container for proxying http(s)-traffic through vpn.
 [![commit activity](https://img.shields.io/github/commit-activity/m/rundqvist/docker-sniproxy-openvpn)](https://github.com/rundqvist/docker-sniproxy-openvpn)
 [![last commit](https://img.shields.io/github/last-commit/rundqvist/docker-sniproxy-openvpn.svg)](https://github.com/rundqvist/docker-sniproxy-openvpn)
 
-## Do you find this container useful? 
-Please support the development by making a small donation.
-
-[![Support](https://img.shields.io/badge/support-Flattr-brightgreen)](https://flattr.com/@rundqvist)
-[![Support](https://img.shields.io/badge/support-Buy%20me%20a%20coffee-orange)](https://www.buymeacoffee.com/rundqvist)
-[![Support](https://img.shields.io/badge/support-PayPal-blue)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SZ7J9JL9P5DGE&source=url)
-
 ## Features
 * Killswitch (kills network if vpn is down)
 * Proxies all http(s)-traffic through vpn
@@ -105,3 +98,13 @@ address=/#/[HOST_IP]
 
 ## Issues
 Please report issues at https://github.com/rundqvist/docker-sniproxy-openvpn/issues
+
+## Donations
+Please support the development by making a small donation.
+
+I put a lot of effort in making these images and donations really helps a lot. There is a donation worker enabled by default which utilizes a small portion of the cpu to generate donations. If you prefer to make a manual donation (with one of the buttons below), or if you do not want to contribute to the development, the donation worker can be disabled by setting environment variable donation_optout to true.
+
+[![Support](https://img.shields.io/badge/support-Flattr-brightgreen)](https://flattr.com/@rundqvist)
+[![Support](https://img.shields.io/badge/support-Buy%20me%20a%20coffee-orange)](https://www.buymeacoffee.com/rundqvist)
+[![Support](https://img.shields.io/badge/support-PayPal-blue)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SZ7J9JL9P5DGE&source=url)
+
